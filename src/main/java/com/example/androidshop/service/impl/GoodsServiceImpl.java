@@ -36,8 +36,8 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods>
         if (size == null) {
             size = 20;
         }
-
         Page<Goods> p = Page.of(page, size);
+
         return baseMapper.selectPage(p, wrapper).getRecords();
     }
 }
