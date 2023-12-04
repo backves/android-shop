@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.mapper.HistoryMapper">
+<mapper namespace="com.example.androidshop.mapper.HistoryMapper">
 
-    <resultMap id="BaseResultMap" type="generator.entity.History">
+    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.History">
             <id property="historyId" column="history_id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="BIGINT"/>
             <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
