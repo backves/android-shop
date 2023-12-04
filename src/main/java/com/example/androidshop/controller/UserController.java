@@ -58,8 +58,7 @@ public class UserController {
         }
 
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<User>()
-                .eq(User::getPhone, phone)
-                .eq(User::getPassword, Md5Util.getMD5String(password));
+                .eq(User::getPhone, phone);
         User user = userService.getOne(queryWrapper);
 
         if (user == null) {

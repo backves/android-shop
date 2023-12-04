@@ -25,6 +25,6 @@ public class Test {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        System.out.println(goodsService.getByNameAndUserId("二手自行车", 3L));
+        System.out.println(goodsService.getByNameAndUserId("hjc", 1L));
     }
 }
