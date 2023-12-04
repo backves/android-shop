@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.mapper.MessageMapper">
+<mapper namespace="com.example.androidshop.mapper.MessageMapper">
 
-    <resultMap id="BaseResultMap" type="generator.entity.Message">
+    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.Message">
             <id property="messageId" column="message_id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="BIGINT"/>
             <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
