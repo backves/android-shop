@@ -6,10 +6,12 @@ import com.example.androidshop.entity.Address;
 import com.example.androidshop.entity.Result;
 import com.example.androidshop.service.AddressService;
 import com.example.androidshop.utils.ThreadLocalUtil;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -20,25 +22,22 @@ public class AddressController {
 
     @PostMapping("/addAddress")
     public Result addAddress(@RequestBody @Validated(Address.Insert.class) Address address) {
-        if (!Validator.isMobile(address.getPhone())) {
-            return Result.error("手机号格式不正确");
-        }
-        addressService.addAddress(address);
-        return Result.success();
+        return addressService.addAddress(address);
     }
 
     @PutMapping("/updateAddress")
     public Result updateAddress(@RequestBody Address address) {
-
-        if (!Validator.isMobile(address.getPhone())) {
-            return Result.error("手机号格式不正确");
-        }
-
-        if (addressService.getById(address.getAddressId()) == null) {
-            return Result.error("地址不存在");
-        }
-
-        addressService.updateById(address);
-        return Result.success();
+        return addressService.updateAddress(address);
     }
+    @GetMapping("/listAddress")
+    public Result listAddressByUserId(Long userId) {
+        LambdaQueryWrapper<Address> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Address::getUserId, userId);
+        return Result.success(addressService.list(wrapper));
+    }
+    @DeleteMapping("/deleteAddress")
+    public Result deleteAddress(Long addressId) {
+        return addressService.deleteAddress(addressId);
+    }
+
 }

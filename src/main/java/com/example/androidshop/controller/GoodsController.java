@@ -63,7 +63,6 @@ public class GoodsController {
     public Result getGoodsList(String name, Long userId, Boolean priceAsc, Integer page, Integer size) {
         return Result.success(goodsService.getGoodsList(name, userId, priceAsc, page, size));
     }
-
     @DeleteMapping("/deleteGoods")
     public Result deleteGoods(Long id) {
 
