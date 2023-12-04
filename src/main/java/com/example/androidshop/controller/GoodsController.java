@@ -76,6 +76,7 @@ public class GoodsController {
         }
 
         goodsService.removeById(id);
+
         return Result.success();
     }
 

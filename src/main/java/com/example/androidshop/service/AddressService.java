@@ -5,10 +5,7 @@ import com.example.androidshop.entity.Address;
 import com.example.androidshop.entity.Result;
 
 public interface AddressService extends IService<Address> {
+    Long countAddress(Long userId);
 
-    Result addAddress(Address address);
-
-    Result updateAddress(Address address);
-
-    Result deleteAddress(Long addressId);
+    Boolean checkRepetition(Address address);
 }
