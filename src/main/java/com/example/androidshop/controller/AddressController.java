@@ -20,15 +20,10 @@ public class AddressController {
 
     @PostMapping("/addAddress")
     public Result addAddress(@RequestBody @Validated(Address.Insert.class) Address address) {
-
-        Map<String, Object> map = ThreadLocalUtil.get();
-        Long userId = Long.valueOf(String.valueOf(map.get("id")));
-
         if (!Validator.isMobile(address.getPhone())) {
             return Result.error("手机号格式不正确");
         }
-        address.setUserId(userId);
-        addressService.save(address);
+        addressService.addAddress(address);
         return Result.success();
     }
 
@@ -39,12 +34,7 @@ public class AddressController {
             return Result.error("手机号格式不正确");
         }
 
-        LambdaQueryWrapper<Address> wrapper = new LambdaQueryWrapper<Address>()
-                .eq(Address::getAddressId, address.getAddressId());
-
-        System.out.println(wrapper.getSqlSegment());
-
-        if (addressService.getOne(wrapper) == null) {
+        if (addressService.getById(address.getAddressId()) == null) {
             return Result.error("地址不存在");
         }
 

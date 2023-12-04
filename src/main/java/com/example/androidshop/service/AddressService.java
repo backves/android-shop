@@ -5,4 +5,5 @@ import com.example.androidshop.entity.Address;
 
 public interface AddressService extends IService<Address> {
 
+    void addAddress(Address address);
 }

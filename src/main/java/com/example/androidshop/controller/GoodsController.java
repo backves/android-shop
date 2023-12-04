@@ -80,11 +80,6 @@ public class GoodsController {
         return Result.success();
     }
 
-    @GetMapping("/goodsList")
-    public Result getGoodsList(Integer page, Integer size) {
-        return Result.success(goodsService.list());
-    }
-
     private Goods getById(Long id) {
         Goods goods = goodsService.getById(id);
 
