@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface GoodsService extends IService<Goods> {
     Goods getByNameAndUserId(String name, Long userId);
+
+    List<Goods> getGoodsList(String name, Long userId, Boolean priceAsc, Integer page, Integer size);
 }

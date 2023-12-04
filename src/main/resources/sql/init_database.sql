@@ -48,15 +48,24 @@ create table comment
     constraint fk_comment_goods foreign key (goods_id) references goods (goods_id)
 );
 
+-- 图片
+create table img
+(
+    img_id      bigint unsigned not null auto_increment primary key,
+    url         varchar(255)    not null,
+    create_time timestamp       not null default current_timestamp
+);
+
 -- 商品图片
 -- 一个商品最多 5 张图片
 create table goods_img
 (
-    img_id      bigint unsigned not null auto_increment primary key,
+    g_img_id    bigint unsigned not null auto_increment primary key,
     goods_id    bigint unsigned not null,
-    image       varchar(255)    not null,
+    img_id      bigint unsigned not null,
     create_time timestamp       not null default current_timestamp,
-    constraint fk_goods_img_goods foreign key (goods_id) references goods (goods_id)
+    constraint fk_goods_img_goods foreign key (goods_id) references goods (goods_id),
+    constraint fk_goods_img_img foreign key (img_id) references img (img_id)
 );
 
 

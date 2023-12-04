@@ -1,7 +1,6 @@
 package com.example.androidshop.controller;
 
 import cn.hutool.core.lang.Validator;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.androidshop.entity.Result;
 import com.example.androidshop.entity.User;
 import com.example.androidshop.service.UserService;
@@ -31,9 +30,7 @@ public class UserController {
             return Result.error("手机号不正确");
         }
 
-        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<User>()
-                .eq(User::getPhone, phone);
-        User user = userService.getOne(queryWrapper);
+        User user = userService.getUserByPhone(phone);
 
         if (user != null) {
             return Result.error("用户已存在");
@@ -57,11 +54,7 @@ public class UserController {
             return Result.error("手机号不正确");
         }
 
-        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<User>()
-                .eq(User::getPhone, phone)
-                .eq(User::getPassword, Md5Util.getMD5String(password));
-        User user = userService.getOne(queryWrapper);
-
+        User user = userService.getUserByPhone(phone);
         if (user == null) {
             return Result.error("用户不存在");
         }
