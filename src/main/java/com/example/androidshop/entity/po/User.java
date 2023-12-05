@@ -1,4 +1,4 @@
-package com.example.androidshop.entity;
+package com.example.androidshop.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

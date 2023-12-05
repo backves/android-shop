@@ -1,8 +1,8 @@
 package com.example.androidshop.controller;
 
 import cn.hutool.core.lang.Validator;
-import com.example.androidshop.entity.Result;
-import com.example.androidshop.entity.User;
+import com.example.androidshop.entity.po.Result;
+import com.example.androidshop.entity.po.User;
 import com.example.androidshop.service.UserService;
 import com.example.androidshop.utils.JwtUtil;
 import com.example.androidshop.utils.Md5Util;

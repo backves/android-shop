@@ -2,17 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.androidshop.mapper.HistoryMapper">
+<mapper namespace="com.example.androidshop.mapper.GoodsImgMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.History">
-            <id property="historyId" column="history_id" jdbcType="BIGINT"/>
-            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.po.GoodsImg">
+            <id property="imgId" column="img_id" jdbcType="BIGINT"/>
             <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+            <result property="image" column="image" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        history_id,user_id,goods_id,
+        img_id,goods_id,image,
         create_time
     </sql>
 </mapper>

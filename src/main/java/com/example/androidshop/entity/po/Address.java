@@ -1,4 +1,4 @@
-package com.example.androidshop.entity;
+package com.example.androidshop.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -7,39 +7,31 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
-@TableName(value = "goods")
+@TableName(value ="address")
 @Data
 @NoArgsConstructor
-public class Goods implements Serializable {
+public class Address implements Serializable {
     @TableId(type = IdType.AUTO)
-    @NotNull(groups = Update.class)
-    private Long goodsId;
+    private Long addressId;
     private Long userId;
-    @NotNull
-    private String name;
-    @NotNull
-    private BigDecimal price;
-    @NotNull
-    private String img;
-    @NotNull
-    private String detail;
     @NotNull(groups = Insert.class)
-    private String type;
-    private Integer state;
+    private String name;
+    @NotNull(groups = Insert.class)
+    private String phone;
+    @NotNull(groups = Insert.class)
+    private String location;
+    @NotNull(groups = Insert.class)
+    private String detail;
     private Date createTime;
     private Date updateTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
     public interface Insert {
-    }
-
-    public interface Update {
     }
 }

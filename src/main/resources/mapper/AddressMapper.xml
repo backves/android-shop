@@ -2,25 +2,22 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.androidshop.mapper.GoodsMapper">
+<mapper namespace="com.example.androidshop.mapper.AddressMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.Goods">
-            <id property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.po.Address">
+            <id property="addressId" column="address_id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="price" column="price" jdbcType="DECIMAL"/>
-            <result property="img" column="img" jdbcType="VARCHAR"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="location" column="location" jdbcType="VARCHAR"/>
             <result property="detail" column="detail" jdbcType="VARCHAR"/>
-            <result property="type" column="type" jdbcType="VARCHAR"/>
-            <result property="state" column="state" jdbcType="TINYINT"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        goods_id,user_id,name,
-        price,img,detail,
-        type,state,create_time,
-        update_time
+        address_id,user_id,name,
+        phone,location,detail,
+        create_time,update_time
     </sql>
 </mapper>

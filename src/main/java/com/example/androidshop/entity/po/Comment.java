@@ -1,4 +1,4 @@
-package com.example.androidshop.entity;
+package com.example.androidshop.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -12,17 +12,17 @@ import java.util.Date;
 
 /**
  * 
- * @TableName message
+ * @TableName comment
  */
-@TableName(value ="message")
+@TableName(value ="comment")
 @Data
 @NoArgsConstructor
-public class Message implements Serializable {
+public class Comment implements Serializable {
     /**
      * 
      */
     @TableId(type = IdType.AUTO)
-    private Long messageId;
+    private Long commentId;
 
     /**
      * 
@@ -33,11 +33,6 @@ public class Message implements Serializable {
      * 
      */
     private Long goodsId;
-
-    /**
-     * 
-     */
-    private Long replyId;
 
     /**
      * 
@@ -54,6 +49,11 @@ public class Message implements Serializable {
      */
     private Date createTime;
 
+    /**
+     * 
+     */
+    private Date updateTime;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -68,27 +68,27 @@ public class Message implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Message other = (Message) that;
-        return (this.getMessageId() == null ? other.getMessageId() == null : this.getMessageId().equals(other.getMessageId()))
+        Comment other = (Comment) that;
+        return (this.getCommentId() == null ? other.getCommentId() == null : this.getCommentId().equals(other.getCommentId()))
             && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
             && (this.getGoodsId() == null ? other.getGoodsId() == null : this.getGoodsId().equals(other.getGoodsId()))
-            && (this.getReplyId() == null ? other.getReplyId() == null : this.getReplyId().equals(other.getReplyId()))
             && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
             && (this.getPraise() == null ? other.getPraise() == null : this.getPraise().equals(other.getPraise()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()));
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getMessageId() == null) ? 0 : getMessageId().hashCode());
+        result = prime * result + ((getCommentId() == null) ? 0 : getCommentId().hashCode());
         result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
         result = prime * result + ((getGoodsId() == null) ? 0 : getGoodsId().hashCode());
-        result = prime * result + ((getReplyId() == null) ? 0 : getReplyId().hashCode());
         result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
         result = prime * result + ((getPraise() == null) ? 0 : getPraise().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
+        result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         return result;
     }
 
@@ -98,13 +98,13 @@ public class Message implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", messageId=").append(messageId);
+        sb.append(", commentId=").append(commentId);
         sb.append(", userId=").append(userId);
         sb.append(", goodsId=").append(goodsId);
-        sb.append(", replyId=").append(replyId);
         sb.append(", content=").append(content);
         sb.append(", praise=").append(praise);
         sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -1,7 +1,7 @@
 package com.example.androidshop.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.androidshop.entity.Goods;
+import com.example.androidshop.entity.po.Goods;
 
 import java.util.List;
 
