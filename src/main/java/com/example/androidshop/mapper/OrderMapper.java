@@ -10,8 +10,8 @@ import java.util.List;
 
 @Mapper
 public interface OrderMapper extends BaseMapper<Order> {
-//    @Select("select * from `orders` where seller_id =#{userId} or buyer_id =#{userId}")
-    List<Order> getOrderListByUserId(Long userId);
+
+    List<Order> listOrder(Long userId, Integer state, Boolean isSeller);
 }
 
 
