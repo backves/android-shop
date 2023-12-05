@@ -14,7 +14,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        favorite_id,user_id,goods_id,
+            favorite_id,user_id,goods_id,
         state,create_time,update_time
     </sql>
 </mapper>

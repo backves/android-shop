@@ -6,7 +6,6 @@ import com.example.androidshop.entity.Address;
 import com.example.androidshop.entity.Result;
 import com.example.androidshop.service.AddressService;
 import com.example.androidshop.utils.ThreadLocalUtil;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -104,5 +103,4 @@ public class AddressController {
             throw new RuntimeException("没有权限");
         }
     }
-
 }
