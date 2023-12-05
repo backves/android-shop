@@ -37,17 +37,17 @@
         from `orders`
         <where>
             <if test="state!= null">
-               state=#{state} and
+                state = #{state}
             </if>
             <if test="isSeller!= null and isSeller">
-               seller_id = #{userId} and
+                and seller_id = #{userId}
             </if>
-        <if test="isSeller!= null and!isSeller">
-            buyer_id = #{userId} and
-        </if>
-        <if test="isSeller == null">
-             seller_id = #{userId} or   buyer_id = #{userId}
-        </if>
+            <if test="isSeller!= null and!isSeller">
+                and buyer_id = #{userId}
+            </if>
+            <if test="isSeller == null">
+                and (seller_id = #{userId} or buyer_id = #{userId})
+            </if>
         </where>
     </select>
 </mapper>

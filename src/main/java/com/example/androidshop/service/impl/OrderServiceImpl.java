@@ -17,7 +17,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
     OrderMapper orderMapper;
 
     @Override
-    public void Payment(Order order) {
+    public void PayOrder(Order order) {
         order.setState(2);
         updateById(order);
     }
@@ -36,17 +36,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
 
     @Override
     public List<Order> listOrder(Long userId, Integer state, Boolean isSeller) {
-
-//        LambdaQueryWrapper<Order> wrapperTemp = new LambdaQueryWrapper<Order>()
-//                .eq(Order::getBuyerId, userId);
-//
-//        LambdaQueryWrapper<Order> wrapper = new LambdaQueryWrapper<Order>()
-//                .eq(isSeller != null && isSeller, Order::getSellerId, userId)
-//                .eq(isSeller != null && !isSeller, Order::getBuyerId, userId)
-//                .eq(isSeller == null, Order::getSellerId, userId)
-//                .eq(state != null, Order::getState, state);
         return orderMapper.listOrder(userId, state, isSeller);
-
     }
 }
 

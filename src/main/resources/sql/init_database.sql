@@ -12,6 +12,7 @@ create table user
     email       varchar(50)              default null,
     phone       varchar(11)     not null unique,
     avatar      varchar(255)    not null default '',
+    address_id  bigint unsigned          default null,
     create_time timestamp       not null default current_timestamp,
     update_time timestamp       not null default current_timestamp on update current_timestamp
 );
@@ -72,7 +73,7 @@ create table goods_img
 -- 订单
 -- 订单状态(待支付 1 -> 待发货 2 -> 待收货 3 -> 已收货  4 -> 已完成 5)
 --              -> 已取消 0
-create table `order`
+create table orders
 (
     order_id    bigint unsigned not null auto_increment primary key,
     seller_id   bigint unsigned not null,
@@ -150,10 +151,14 @@ create table chat_message
 (
     chat_message_id bigint unsigned not null auto_increment primary key,
     chat_id         bigint unsigned not null,
+    sender_id       bigint unsigned not null,
+    receiver_id     bigint unsigned not null,
     content         varchar(255)    not null,
-    type            tinyint(1)      not null default 1,
+    type            tinyint(1)      not null default 0,
     create_time     timestamp       not null default current_timestamp,
-    constraint fk_chat_message_seller foreign key (chat_id) references chat (chat_id)
+    constraint fk_chat_message_chat foreign key (chat_id) references chat (chat_id),
+    constraint fk_chat_message_buyer foreign key (sender_id) references user (user_id),
+    constraint fk_chat_message_seller foreign key (receiver_id) references user (user_id)
 );
 
 -- 商品留言
@@ -170,3 +175,18 @@ create table message
     constraint fk_message_goods foreign key (goods_id) references goods (goods_id),
     constraint fk_message_reply foreign key (reply_id) references message (message_id)
 );
+
+alter table user
+    add constraint fk_user_address foreign key (address_id) references address (address_id);
+
+alter table orders
+    modify name varchar(255) null;
+
+alter table orders
+    modify phone varchar(11) null;
+
+alter table orders
+    modify location varchar(50) null;
+
+alter table orders
+    modify detail varchar(255) null;

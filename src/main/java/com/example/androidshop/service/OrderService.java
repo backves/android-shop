@@ -8,7 +8,7 @@ import java.util.List;
 public interface OrderService extends IService<Order> {
 
 //    void addOrder(Order order);
-    void Payment(Order order);
+    void PayOrder(Order order);
 
     void confirmOrder(Order order);
 

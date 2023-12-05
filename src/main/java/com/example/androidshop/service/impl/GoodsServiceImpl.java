@@ -25,8 +25,9 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods>
     @Override
     public List<Goods> getGoodsList(String name, Long userId, Boolean priceAsc, Integer page, Integer size) {
         LambdaQueryWrapper<Goods> wrapper = new LambdaQueryWrapper<Goods>()
-                .like(name != null, Goods::getName, "%" + name)
+                .like(name != null, Goods::getName, name)
                 .eq(userId != null, Goods::getUserId, userId)
+                .eq(Goods::getState, 1)
                 .orderByAsc(priceAsc != null && priceAsc, Goods::getPrice)
                 .orderByDesc(priceAsc != null && !priceAsc, Goods::getPrice);
 

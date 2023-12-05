@@ -3,10 +3,12 @@ package com.example.androidshop.controller;
 import cn.hutool.core.lang.Validator;
 import com.example.androidshop.entity.po.Result;
 import com.example.androidshop.entity.po.User;
+import com.example.androidshop.service.AddressService;
 import com.example.androidshop.service.UserService;
 import com.example.androidshop.utils.JwtUtil;
 import com.example.androidshop.utils.Md5Util;
 import com.example.androidshop.utils.ShortUuidUtil;
+import com.example.androidshop.utils.ThreadLocalUtil;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final AddressService addressService;
 
     @PostMapping("/register")
     public Result register(String phone, @Pattern(regexp = "^\\S{5,16}$") String password) {
@@ -69,6 +72,34 @@ public class UserController {
         String token = JwtUtil.genToken(claims);
 
         return Result.success(token);
+    }
+
+    @PostMapping("/setDefaultAddress")
+    public Result setDefaultAddress(Long addressId) {
+        Map<String, Object> map = ThreadLocalUtil.get();
+        Long userId = Long.valueOf(String.valueOf(map.get("id")));
+
+        if (!addressService.getById(addressId).getUserId().equals(userId)) {
+            return Result.error("没有权限");
+        }
+
+        User user = new User();
+        user.setUserId(userId);
+        user.setAddressId(addressId);
+
+        userService.updateById(user);
+
+        return Result.success();
+    }
+
+    @GetMapping("/userInfo")
+    public Result userInfo() {
+        Map<String, Object> map = ThreadLocalUtil.get();
+        Long userId = Long.valueOf(String.valueOf(map.get("id")));
+
+        User user = userService.getById(userId);
+
+        return Result.success(user);
     }
 
     @GetMapping("/test")

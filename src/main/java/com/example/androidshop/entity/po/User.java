@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName(value ="user")
+@TableName(value = "user")
 @Data
 @NoArgsConstructor
 public class User implements Serializable {
@@ -24,6 +24,7 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String avatar;
+    private Long addressId;
     private Date createTime;
     private Date updateTime;
 

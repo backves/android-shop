@@ -12,11 +12,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * 
- * @TableName order
- */
-@TableName(value ="orders")
+@TableName(value = "orders")
 @Data
 @NoArgsConstructor
 public class Order implements Serializable {
@@ -31,13 +27,13 @@ public class Order implements Serializable {
     @NotNull(groups = Order.Insert.class)
     private BigDecimal price;
     private Integer state;
-    @NotNull(groups = Order.Insert.class)
+    @NotNull(groups = Order.Buy.class)
     private String name;
-    @NotNull(groups = Order.Insert.class)
+    @NotNull(groups = Order.Buy.class)
     private String phone;
-    @NotNull(groups = Order.Insert.class)
+    @NotNull(groups = Order.Buy.class)
     private String location;
-    @NotNull(groups = Order.Insert.class)
+    @NotNull(groups = Order.Buy.class)
     private String detail;
     private Date createTime;
     private Date updateTime;
@@ -46,5 +42,8 @@ public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public interface Insert {
+    }
+
+    public interface Buy {
     }
 }
