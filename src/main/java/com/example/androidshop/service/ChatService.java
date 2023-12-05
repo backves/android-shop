@@ -1,7 +1,7 @@
 package com.example.androidshop.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.androidshop.entity.Chat;
+import com.example.androidshop.entity.po.Chat;
 
 public interface ChatService extends IService<Chat> {
 

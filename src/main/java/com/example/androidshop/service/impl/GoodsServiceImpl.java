@@ -3,7 +3,7 @@ package com.example.androidshop.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.androidshop.entity.Goods;
+import com.example.androidshop.entity.po.Goods;
 import com.example.androidshop.mapper.GoodsMapper;
 import com.example.androidshop.service.GoodsService;
 import org.springframework.stereotype.Service;

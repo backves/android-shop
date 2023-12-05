@@ -8,8 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.example.androidshop.mapper")
 public class AndroidShopApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AndroidShopApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AndroidShopApplication.class, args);
+    }
 
 }
+

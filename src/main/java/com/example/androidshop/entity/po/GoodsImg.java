@@ -1,4 +1,4 @@
-package com.example.androidshop.entity;
+package com.example.androidshop.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -12,32 +12,27 @@ import java.util.Date;
 
 /**
  * 
- * @TableName chat_message
+ * @TableName goods_img
  */
-@TableName(value ="chat_message")
+@TableName(value ="goods_img")
 @Data
 @NoArgsConstructor
-public class ChatMessage implements Serializable {
+public class GoodsImg implements Serializable {
     /**
      * 
      */
     @TableId(type = IdType.AUTO)
-    private Long chatMessageId;
+    private Long imgId;
 
     /**
      * 
      */
-    private Long chatId;
+    private Long goodsId;
 
     /**
      * 
      */
-    private String content;
-
-    /**
-     * 
-     */
-    private Integer type;
+    private String image;
 
     /**
      * 
@@ -58,11 +53,10 @@ public class ChatMessage implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        ChatMessage other = (ChatMessage) that;
-        return (this.getChatMessageId() == null ? other.getChatMessageId() == null : this.getChatMessageId().equals(other.getChatMessageId()))
-            && (this.getChatId() == null ? other.getChatId() == null : this.getChatId().equals(other.getChatId()))
-            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
-            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
+        GoodsImg other = (GoodsImg) that;
+        return (this.getImgId() == null ? other.getImgId() == null : this.getImgId().equals(other.getImgId()))
+            && (this.getGoodsId() == null ? other.getGoodsId() == null : this.getGoodsId().equals(other.getGoodsId()))
+            && (this.getImage() == null ? other.getImage() == null : this.getImage().equals(other.getImage()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()));
     }
 
@@ -70,10 +64,9 @@ public class ChatMessage implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getChatMessageId() == null) ? 0 : getChatMessageId().hashCode());
-        result = prime * result + ((getChatId() == null) ? 0 : getChatId().hashCode());
-        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
-        result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
+        result = prime * result + ((getImgId() == null) ? 0 : getImgId().hashCode());
+        result = prime * result + ((getGoodsId() == null) ? 0 : getGoodsId().hashCode());
+        result = prime * result + ((getImage() == null) ? 0 : getImage().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         return result;
     }
@@ -84,10 +77,9 @@ public class ChatMessage implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", chatMessageId=").append(chatMessageId);
-        sb.append(", chatId=").append(chatId);
-        sb.append(", content=").append(content);
-        sb.append(", type=").append(type);
+        sb.append(", imgId=").append(imgId);
+        sb.append(", goodsId=").append(goodsId);
+        sb.append(", image=").append(image);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

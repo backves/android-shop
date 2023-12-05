@@ -1,12 +1,11 @@
 package com.example.androidshop.controller;
 
-import com.example.androidshop.entity.Favorite;
-import com.example.androidshop.entity.Result;
+import com.example.androidshop.entity.po.Favorite;
+import com.example.androidshop.entity.po.Result;
 import com.example.androidshop.service.FavoriteService;
 import com.example.androidshop.service.GoodsService;
 import com.example.androidshop.utils.ThreadLocalUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -19,16 +18,22 @@ public class FavoriteController {
     private final GoodsService goodsService;
 
     @PostMapping("/addFavorite")
-    public Result addFavorite(@RequestBody @Validated Favorite favorite) {
+    public Result addFavorite(Long goodsId) {
 
         Map<String, Object> map = ThreadLocalUtil.get();
         Long userId = Long.valueOf(String.valueOf(map.get("id")));
 
-        if (goodsService.getById(favorite.getGoodsId()) == null) {
+        if (goodsService.getById(goodsId) == null) {
             return Result.error("商品不存在");
         }
 
+        if (favoriteService.checkRepetition(userId, goodsId)) {
+            return Result.error("已收藏");
+        }
+
+        Favorite favorite = new Favorite();
         favorite.setUserId(userId);
+        favorite.setGoodsId(goodsId);
 
         favoriteService.save(favorite);
         return Result.success();

@@ -1,4 +1,4 @@
-package com.example.androidshop.entity;
+package com.example.androidshop.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -12,25 +12,33 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@TableName(value = "goods")
+/**
+ * 
+ * @TableName order
+ */
+@TableName(value ="orders")
 @Data
 @NoArgsConstructor
-public class Goods implements Serializable {
+public class Order implements Serializable {
     @TableId(type = IdType.AUTO)
-    @NotNull(groups = Update.class)
+    private Long orderId;
+    @NotNull(groups = Order.Insert.class)
+    private Long sellerId;
+    @NotNull(groups = Order.Insert.class)
+    private Long buyerId;
+    @NotNull(groups = Order.Insert.class)
     private Long goodsId;
-    private Long userId;
-    @NotNull
-    private String name;
-    @NotNull
+    @NotNull(groups = Order.Insert.class)
     private BigDecimal price;
-    @NotNull
-    private String img;
-    @NotNull
-    private String detail;
-    @NotNull(groups = Insert.class)
-    private String type;
     private Integer state;
+    @NotNull(groups = Order.Insert.class)
+    private String name;
+    @NotNull(groups = Order.Insert.class)
+    private String phone;
+    @NotNull(groups = Order.Insert.class)
+    private String location;
+    @NotNull(groups = Order.Insert.class)
+    private String detail;
     private Date createTime;
     private Date updateTime;
 
@@ -38,8 +46,5 @@ public class Goods implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public interface Insert {
-    }
-
-    public interface Update {
     }
 }

@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.androidshop.mapper.FavoriteMapper">
 
+<<<<<<< HEAD
     <resultMap id="BaseResultMap" type="com.example.androidshop.entity.Favorite">
             <id property="favoriteId" column="favorite_id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="BIGINT"/>
@@ -18,3 +19,54 @@
         state,create_time,update_time
     </sql>
 </mapper>
+=======
+    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.po.Favorite">
+        <id property="favoriteId" column="favorite_id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+        <result property="state" column="state" jdbcType="TINYINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap id="VOResultMap" type="com.example.androidshop.entity.vo.FavoriteVO">
+        <id property="favoriteId" column="favorite_id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="goodsName" column="goods.name" jdbcType="VARCHAR"/>
+        <result property="goodsPrice" column="goods.price" jdbcType="DECIMAL"/>
+        <result property="img" column="img" jdbcType="VARCHAR"/>
+        <result property="detail" column="detail" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="goodsState" column="goods.state" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <!--    <sql id="Base_Column_List">-->
+    <!--        favorite_id,user_id,goods_id,-->
+    <!--        state,create_time,update_time-->
+    <!--    </sql>-->
+
+    <select id="queryFavorite" resultType="com.example.androidshop.entity.po.Favorite">
+        SELECT *
+        FROM favorite
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="listFavoriteByUserId" resultType="com.example.androidshop.entity.vo.FavoriteVO">
+        SELECT favorite.*,
+               goods.name  as goods_name,
+               goods.price as goods_price,
+               goods.img,
+               goods.detail,
+               goods.type,
+               goods.state as goods_state
+        FROM favorite
+                 INNER JOIN goods on favorite.goods_id = goods.goods_id
+        WHERE favorite.user_id = #{userId}
+        ORDER BY create_time DESC
+        LIMIT #{page}, #{size}
+    </select>
+</mapper>
+>>>>>>> origin/main

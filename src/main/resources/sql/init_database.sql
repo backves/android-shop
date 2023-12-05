@@ -70,9 +70,8 @@ create table goods_img
 
 
 -- 订单
--- 订单状态(待同意 -> 待支付 -> 待发货 -> 待收货 -> 已收货 -> 已完成)
---                       -> 已取消
---              -> 已拒绝
+-- 订单状态(待支付 1 -> 待发货 2 -> 待收货 3 -> 已收货  4 -> 已完成 5)
+--              -> 已取消 0
 create table `order`
 (
     order_id    bigint unsigned not null auto_increment primary key,

@@ -1,7 +1,7 @@
 package com.example.androidshop.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.androidshop.entity.ChatMessage;
+import com.example.androidshop.entity.po.ChatMessage;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

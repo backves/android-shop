@@ -1,4 +1,4 @@
-package com.example.androidshop.entity;
+package com.example.androidshop.entity.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

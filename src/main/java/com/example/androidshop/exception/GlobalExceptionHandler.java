@@ -1,6 +1,6 @@
 package com.example.androidshop.exception;
 
-import com.example.androidshop.entity.Result;
+import com.example.androidshop.entity.po.Result;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

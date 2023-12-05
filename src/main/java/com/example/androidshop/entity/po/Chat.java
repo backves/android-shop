@@ -1,4 +1,4 @@
-package com.example.androidshop.entity;
+package com.example.androidshop.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -12,22 +12,27 @@ import java.util.Date;
 
 /**
  * 
- * @TableName history
+ * @TableName chat
  */
-@TableName(value ="history")
+@TableName(value ="chat")
 @Data
 @NoArgsConstructor
-public class History implements Serializable {
+public class Chat implements Serializable {
     /**
      * 
      */
     @TableId(type = IdType.AUTO)
-    private Long historyId;
+    private Long chatId;
 
     /**
      * 
      */
-    private Long userId;
+    private Long sellerId;
+
+    /**
+     * 
+     */
+    private Long buyerId;
 
     /**
      * 
@@ -53,9 +58,10 @@ public class History implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        History other = (History) that;
-        return (this.getHistoryId() == null ? other.getHistoryId() == null : this.getHistoryId().equals(other.getHistoryId()))
-            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+        Chat other = (Chat) that;
+        return (this.getChatId() == null ? other.getChatId() == null : this.getChatId().equals(other.getChatId()))
+            && (this.getSellerId() == null ? other.getSellerId() == null : this.getSellerId().equals(other.getSellerId()))
+            && (this.getBuyerId() == null ? other.getBuyerId() == null : this.getBuyerId().equals(other.getBuyerId()))
             && (this.getGoodsId() == null ? other.getGoodsId() == null : this.getGoodsId().equals(other.getGoodsId()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()));
     }
@@ -64,8 +70,9 @@ public class History implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getHistoryId() == null) ? 0 : getHistoryId().hashCode());
-        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
+        result = prime * result + ((getChatId() == null) ? 0 : getChatId().hashCode());
+        result = prime * result + ((getSellerId() == null) ? 0 : getSellerId().hashCode());
+        result = prime * result + ((getBuyerId() == null) ? 0 : getBuyerId().hashCode());
         result = prime * result + ((getGoodsId() == null) ? 0 : getGoodsId().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         return result;
@@ -77,8 +84,9 @@ public class History implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", historyId=").append(historyId);
-        sb.append(", userId=").append(userId);
+        sb.append(", chatId=").append(chatId);
+        sb.append(", sellerId=").append(sellerId);
+        sb.append(", buyerId=").append(buyerId);
         sb.append(", goodsId=").append(goodsId);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);

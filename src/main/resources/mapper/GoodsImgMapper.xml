@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.androidshop.mapper.GoodsImgMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.GoodsImg">
+    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.po.GoodsImg">
             <id property="imgId" column="img_id" jdbcType="BIGINT"/>
             <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
             <result property="image" column="image" jdbcType="VARCHAR"/>
