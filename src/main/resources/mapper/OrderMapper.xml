@@ -19,13 +19,14 @@
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-<!--    <sql id="Base_Column_List">-->
-<!--        order_id,seller_id,buyer_id,-->
-<!--        goods_id,price,state,-->
-<!--        name,phone,location,-->
-<!--        detail,create_time,update_time-->
-<!--    </sql>-->
-    <select id="getOrderListByUserId" resultType="com.example.androidshop.entity.Order">
+    <sql id="Base_Column_List">
+        order_id,seller_id,buyer_id,
+        goods_id,price,state,
+        name,phone,location,
+        detail,create_time,update_time
+    </sql>
+
+    <select id="getOrderListByUserId" resultType="com.example.androidshop.entity.po.Order">
         select *
         from `orders` where seller_id = #{userId} or buyer_id = #{userId}
     </select>

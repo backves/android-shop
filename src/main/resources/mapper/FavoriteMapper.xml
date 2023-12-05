@@ -3,23 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.androidshop.mapper.FavoriteMapper">
-
-<<<<<<< HEAD
-    <resultMap id="BaseResultMap" type="com.example.androidshop.entity.Favorite">
-            <id property="favoriteId" column="favorite_id" jdbcType="BIGINT"/>
-            <result property="userId" column="user_id" jdbcType="BIGINT"/>
-            <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
-            <result property="state" column="state" jdbcType="TINYINT"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-    </resultMap>
-
-    <sql id="Base_Column_List">
-            favorite_id,user_id,goods_id,
-        state,create_time,update_time
-    </sql>
-</mapper>
-=======
     <resultMap id="BaseResultMap" type="com.example.androidshop.entity.po.Favorite">
         <id property="favoriteId" column="favorite_id" jdbcType="BIGINT"/>
         <result property="userId" column="user_id" jdbcType="BIGINT"/>
@@ -69,4 +52,3 @@
         LIMIT #{page}, #{size}
     </select>
 </mapper>
->>>>>>> origin/main

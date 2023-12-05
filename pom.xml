@@ -22,12 +22,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--        mybatis-->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
-        </dependency>
+<!--&lt;!&ndash;        mybatis&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.mybatis.spring.boot</groupId>-->
+<!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
+<!--            <version>3.0.3</version>-->
+<!--        </dependency>-->
         <!--test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,29 +48,29 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.3.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
-            <!--原Mybatis中需排除下面2个依赖-->
-            <exclusions>
-                <exclusion>
-                    <groupId>org.mybatis</groupId>
-                    <artifactId>mybatis</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mybatis</groupId>
-                    <artifactId>mybatis-spring</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.mybatis.spring.boot</groupId>-->
+<!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
+<!--            <version>3.0.3</version>-->
+<!--            &lt;!&ndash;原Mybatis中需排除下面2个依赖&ndash;&gt;-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.mybatis</groupId>-->
+<!--                    <artifactId>mybatis</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.mybatis</groupId>-->
+<!--                    <artifactId>mybatis-spring</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 
-        <!--引入autoconfigure-->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-autoconfigure</artifactId>
-            <version>3.0.3</version>
-        </dependency>
+<!--        &lt;!&ndash;引入autoconfigure&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.mybatis.spring.boot</groupId>-->
+<!--            <artifactId>mybatis-spring-boot-autoconfigure</artifactId>-->
+<!--            <version>3.0.3</version>-->
+<!--        </dependency>-->
         <!--mysql-->
         <dependency>
             <groupId>com.mysql</groupId>

@@ -1,7 +1,7 @@
 package com.example.androidshop.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.androidshop.entity.Order;
+import com.example.androidshop.entity.po.Order;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

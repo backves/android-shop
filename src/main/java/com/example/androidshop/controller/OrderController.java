@@ -1,9 +1,9 @@
 package com.example.androidshop.controller;
 
-import com.example.androidshop.entity.Address;
-import com.example.androidshop.entity.Goods;
-import com.example.androidshop.entity.Order;
-import com.example.androidshop.entity.Result;
+import com.example.androidshop.entity.po.Address;
+import com.example.androidshop.entity.po.Goods;
+import com.example.androidshop.entity.po.Order;
+import com.example.androidshop.entity.po.Result;
 import com.example.androidshop.service.GoodsService;
 import com.example.androidshop.service.OrderService;
 import com.example.androidshop.utils.ThreadLocalUtil;
