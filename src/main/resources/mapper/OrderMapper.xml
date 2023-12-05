@@ -5,18 +5,18 @@
 <mapper namespace="com.example.androidshop.mapper.OrderMapper">
 
     <resultMap id="BaseResultMap" type="com.example.androidshop.entity.po.Order">
-            <id property="orderId" column="order_id" jdbcType="BIGINT"/>
-            <result property="sellerId" column="seller_id" jdbcType="BIGINT"/>
-            <result property="buyerId" column="buyer_id" jdbcType="BIGINT"/>
-            <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
-            <result property="price" column="price" jdbcType="DECIMAL"/>
-            <result property="state" column="state" jdbcType="TINYINT"/>
-            <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="phone" column="phone" jdbcType="VARCHAR"/>
-            <result property="location" column="location" jdbcType="VARCHAR"/>
-            <result property="detail" column="detail" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <id property="orderId" column="order_id" jdbcType="BIGINT"/>
+        <result property="sellerId" column="seller_id" jdbcType="BIGINT"/>
+        <result property="buyerId" column="buyer_id" jdbcType="BIGINT"/>
+        <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+        <result property="price" column="price" jdbcType="DECIMAL"/>
+        <result property="state" column="state" jdbcType="TINYINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="location" column="location" jdbcType="VARCHAR"/>
+        <result property="detail" column="detail" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -28,6 +28,26 @@
 
     <select id="getOrderListByUserId" resultType="com.example.androidshop.entity.po.Order">
         select *
-        from `orders` where seller_id = #{userId} or buyer_id = #{userId}
+        from `orders`
+        where seller_id = #{userId}
+           or buyer_id = #{userId}
+    </select>
+    <select id="listOrder" resultType="com.example.androidshop.entity.po.Order">
+        select *
+        from `orders`
+        <where>
+            <if test="state!= null">
+               state=#{state} and
+            </if>
+            <if test="isSeller!= null and isSeller">
+               seller_id = #{userId} and
+            </if>
+        <if test="isSeller!= null and!isSeller">
+            buyer_id = #{userId} and
+        </if>
+        <if test="isSeller == null">
+             seller_id = #{userId} or   buyer_id = #{userId}
+        </if>
+        </where>
     </select>
 </mapper>
