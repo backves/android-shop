@@ -4,7 +4,10 @@ import cn.hutool.core.lang.Validator;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.androidshop.entity.po.Address;
 import com.example.androidshop.entity.po.Result;
+import com.example.androidshop.entity.po.User;
 import com.example.androidshop.service.AddressService;
+import com.example.androidshop.service.UserService;
+import com.example.androidshop.utils.Md5Util;
 import com.example.androidshop.utils.ThreadLocalUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -18,6 +21,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AddressController {
     private final AddressService addressService;
+    private final UserService userService;
 
     @PostMapping("/addAddress")
     public Result addAddress(@RequestBody @Validated(Address.Insert.class) Address address) {
@@ -88,9 +92,43 @@ public class AddressController {
             return Result.error("地址不存在");
         }
 
+        Map<String, Object> map = ThreadLocalUtil.get();
+        Long userId = Long.valueOf(String.valueOf(map.get("id")));
+
+        if (!address.getUserId().equals(userId)) {
+            return Result.error("无权限删除该地址");
+        }
+
         checkAuth(address);
 
+        User user = userService.getById(userId);
+        if (user.getAddressId().equals(addressId)) {
+            userService.removeAddress(userId);
+        }
+
         addressService.removeById(addressId);
+
+        return Result.success();
+    }
+
+    @PostMapping("/updatePwd")
+    public Result updatePwd(String oldPwd, String newPwd, String rePwd) {
+
+        Map<String, Object> map = ThreadLocalUtil.get();
+        Long userId = Long.valueOf(String.valueOf(map.get("id")));
+
+        User user = userService.getById(userId);
+
+        if (!user.getPassword().equals(Md5Util.getMD5String(oldPwd))) {
+            return Result.error("原密码错误");
+        }
+
+        if (!newPwd.equals(rePwd)) {
+            return Result.error("两次密码不一致");
+        }
+
+        user.setPassword(newPwd);
+        userService.updateById(user);
 
         return Result.success();
     }

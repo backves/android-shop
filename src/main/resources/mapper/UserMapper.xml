@@ -21,4 +21,9 @@
         password,email,phone,
         avatar,create_time,update_time
     </sql>
+    <update id="removeAddress" parameterType="java.lang.Long">
+        update user
+        set address_id = null
+        where user_id = #{userId}
+    </update>
 </mapper>

@@ -17,6 +17,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
         return getOne(queryWrapper);
     }
+
+    @Override
+    public void removeAddress(Long userId) {
+        baseMapper.removeAddress(userId);
+    }
 }
 
 
