@@ -28,14 +28,14 @@
         FROM chat
                  INNER JOIN user ON chat.seller_id = user.user_id
                  INNER JOIN goods ON chat.goods_id = goods.goods_id
-                 INNER JOIN (SELECT chat_message.content, chat_message.chat_id, chat_message.create_time
+                 INNER JOIN (SELECT content, chat_message.chat_id, create_time
                              FROM chat_message
-                             GROUP BY chat_message_id
-                             ORDER BY create_time DESC
-                             LIMIT 1) as clm
-                            on clm.chat_id = chat.chat_id
-        WHERE (chat.buyer_id = #{userId}
-            or chat.seller_id = #{userId})
+                                      INNER JOIN (SELECT chat_id, MAX(chat_message_id) AS latest_message_id
+                                                  FROM chat_message
+                                                  GROUP BY chat_id) AS clm
+                                                 ON clm.latest_message_id = chat_message.chat_message_id) as clm
+                            ON clm.chat_id = chat.chat_id
+        WHERE (chat.buyer_id = #{userId} or chat.seller_id = #{userId})
         ORDER BY create_time DESC
         LIMIT #{page}, #{size}
     </select>

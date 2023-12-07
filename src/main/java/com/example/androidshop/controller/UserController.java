@@ -53,6 +53,8 @@ public class UserController {
     @PostMapping("/login")
     public Result login(String phone, String password) {
 
+        System.out.println(phone + ", " + password);
+
         if (!Validator.isMobile(phone)) {
             return Result.error("手机号不正确");
         }
@@ -104,6 +106,7 @@ public class UserController {
 
     @GetMapping("/test")
     public Result test() {
+        System.out.println("test successfully");
         return Result.success("test successfully");
     }
 }
