@@ -5,19 +5,16 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName(value ="goods_img")
+@TableName(value ="img")
 @Data
-@NoArgsConstructor
-public class GoodsImg implements Serializable {
+public class Img implements Serializable {
     @TableId(type = IdType.AUTO)
-    private Long gImgId;
-    private Long goodsId;
     private Long imgId;
+    private String url;
     private Date createTime;
 
     @TableField(exist = false)

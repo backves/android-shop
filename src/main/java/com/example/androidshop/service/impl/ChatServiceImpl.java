@@ -37,6 +37,8 @@ public class ChatServiceImpl extends ServiceImpl<ChatMapper, Chat>
                 .eq(Chat::getSellerId, sellerId)
                 .eq(Chat::getGoodsId, goodsId);
 
+        System.out.println(queryWrapper.getSqlSegment());
+
         return getOne(queryWrapper);
     }
 }

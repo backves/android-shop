@@ -15,4 +15,12 @@
         img_id,goods_id,image,
         create_time
     </sql>
+    <select id="listByGoodsId" resultType="com.example.androidshop.entity.vo.GoodsImgVO"
+            parameterType="java.lang.Long">
+        select img.url, goods_img.*
+        from img,
+             goods_img
+        where goods_id = #{goodsId}
+          and img.img_id = goods_img.img_id
+    </select>
 </mapper>

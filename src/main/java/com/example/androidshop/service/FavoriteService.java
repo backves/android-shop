@@ -11,4 +11,6 @@ public interface FavoriteService extends IService<Favorite> {
     List<FavoriteVO> listFavoriteByUserId(Long userId, Integer page, Integer size);
 
     Boolean checkRepetition(Long userId, Long goodsId);
+
+    void removeByGoodsId(Long userId, Long goodsId);
 }

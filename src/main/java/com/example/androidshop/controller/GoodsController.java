@@ -1,8 +1,13 @@
 package com.example.androidshop.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.example.androidshop.entity.po.Goods;
 import com.example.androidshop.entity.po.Result;
+import com.example.androidshop.entity.po.User;
+import com.example.androidshop.entity.vo.GoodsVO;
+import com.example.androidshop.service.FavoriteService;
 import com.example.androidshop.service.GoodsService;
+import com.example.androidshop.service.UserService;
 import com.example.androidshop.utils.ThreadLocalUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -15,6 +20,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class GoodsController {
     private final GoodsService goodsService;
+    private final FavoriteService favoriteService;
+    private final UserService userService;
 
     @PostMapping("/postGoods")
     public Result postGoods(@RequestBody @Validated(Goods.Insert.class) Goods goods) {
@@ -39,7 +46,23 @@ public class GoodsController {
 
         Goods goods = getById(id);
 
-        return Result.success(goods);
+        GoodsVO goodsVO = BeanUtil.copyProperties(goods, GoodsVO.class);
+
+        Map<String, Object> map = ThreadLocalUtil.get();
+        Long userId = Long.valueOf(String.valueOf(map.get("id")));
+
+        goodsVO.setIsFavorite(favoriteService.checkRepetition(userId, id));
+
+        User user = userService.getById(goods.getUserId());
+        if (user == null) {
+            return Result.error("用户不存在");
+        }
+
+        goodsVO.setUsername(user.getUsername());
+        goodsVO.setNickname(user.getNickname());
+        goodsVO.setUserAvatar(user.getAvatar());
+
+        return Result.success(goodsVO);
     }
 
     @PutMapping("/updateGoods")

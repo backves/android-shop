@@ -50,6 +50,11 @@ public class ChatController {
             return Result.error("开启聊天失败");
         }
 
+        Chat chatInDb = chatService.getChat(buyerId, sellerId, goodsId);
+        if (chatInDb != null) {
+            return Result.success(chatInDb);
+        }
+
         chat.setSellerId(sellerId);
         chat.setBuyerId(buyerId);
         chat.setGoodsId(goodsId);

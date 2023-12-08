@@ -67,4 +67,22 @@ public class FavoriteController {
         favoriteService.removeById(id);
         return Result.success();
     }
+
+    @DeleteMapping("/deleteFavoriteByGoodsId")
+    public Result deleteAllFavorite(Long goodsId) {
+
+        Map<String, Object> map = ThreadLocalUtil.get();
+        Long userId = Long.valueOf(String.valueOf(map.get("id")));
+
+        if (goodsService.getById(goodsId) == null) {
+            return Result.error("商品不存在");
+        }
+
+        if (!favoriteService.checkRepetition(userId, goodsId)) {
+            return Result.error("收藏不存在");
+        }
+
+        favoriteService.removeByGoodsId(userId, goodsId);
+        return Result.success();
+    }
 }

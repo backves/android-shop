@@ -55,6 +55,14 @@ public class FavoriteServiceImpl extends ServiceImpl<FavoriteMapper, Favorite>
                 .eq(Favorite::getGoodsId, goodsId);
         return baseMapper.exists(wrapper);
     }
+
+    @Override
+    public void removeByGoodsId(Long userId, Long goodsId) {
+        LambdaQueryWrapper<Favorite> wrapper = new LambdaQueryWrapper<Favorite>()
+                .eq(Favorite::getUserId, userId)
+                .eq(Favorite::getGoodsId, goodsId);
+        baseMapper.delete(wrapper);
+    }
 }
 
 
