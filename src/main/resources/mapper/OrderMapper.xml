@@ -50,4 +50,17 @@
             </if>
         </where>
     </select>
+    <select id="orderInfo" resultType="com.example.androidshop.entity.vo.OrderVO">
+        select orders.*,
+               goods.img    as goods_img,
+               goods.detail as goods_detail,
+               goods.name   as goods_name,
+               goods.price  as goods_price,
+               user.username,
+               user.nickname
+        from orders
+                 inner join goods on orders.goods_id = goods.goods_id
+                 inner join user on orders.seller_id = user.user_id
+        where orders.order_id = #{orderId}
+    </select>
 </mapper>

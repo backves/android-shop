@@ -30,6 +30,7 @@ public class ChatController {
     @Transactional
     @PostMapping("/addChat")
     public Result addChat(Long buyerId, Long sellerId, Long goodsId) {
+
         Chat chat = new Chat();
 
         if (userService.getById(buyerId) == null || userService.getById(sellerId) == null) {

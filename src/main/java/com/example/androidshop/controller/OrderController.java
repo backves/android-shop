@@ -4,6 +4,7 @@ import com.example.androidshop.entity.po.ChatMessage;
 import com.example.androidshop.entity.po.Goods;
 import com.example.androidshop.entity.po.Order;
 import com.example.androidshop.entity.po.Result;
+import com.example.androidshop.entity.vo.OrderVO;
 import com.example.androidshop.service.ChatMessageService;
 import com.example.androidshop.service.ChatService;
 import com.example.androidshop.service.GoodsService;
@@ -69,7 +70,9 @@ public class OrderController {
         chatMessage.setContent(message);
         chatMessageService.save(chatMessage);
 
-        return Result.success();
+        Long orderId = orderService.getByUserIdAndGoodsId(order.getSellerId(), order.getBuyerId(), order.getGoodsId());
+
+        return Result.success(orderId);
     }
 
     //订单未付款  1->订单未发货 2
@@ -109,7 +112,7 @@ public class OrderController {
         ChatMessage chatMessage = new ChatMessage();
         chatMessage.setChatId(chatId);
         chatMessage.setSenderId(userId);
-        chatMessage.setReceiverId(order.getSellerId());
+        chatMessage.setReceiverId(orderInDb.getSellerId());
         chatMessage.setType(1);
         chatMessage.setContent(message);
         chatMessageService.save(chatMessage);
@@ -191,6 +194,26 @@ public class OrderController {
 
 
         return Result.success();
+    }
+
+    @GetMapping("/orderInfo")
+    public Result orderInfo(Long orderId) {
+        Order order = orderService.getById(orderId);
+
+        if (order == null) {
+            return Result.error("订单不存在");
+        }
+
+        Map<String, Object> map = ThreadLocalUtil.get();
+        Long userId = Long.valueOf(String.valueOf(map.get("id")));
+
+        if (!(order.getBuyerId().equals(userId) || order.getSellerId().equals(userId))) {
+            return Result.error("无权访问");
+        }
+
+        OrderVO orderVO = orderService.orderInfo(order.getOrderId());
+
+        return Result.success(orderVO);
     }
 
     @GetMapping("/list")
