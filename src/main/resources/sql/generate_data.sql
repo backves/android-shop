@@ -14,6 +14,14 @@ insert into android_shop.img (img_id, url, create_time) values (7, 'https://img1
 insert into android_shop.img (img_id, url, create_time) values (8, 'https://img14.360buyimg.com/n1/jfs/t1/111017/38/21265/153981/6469e8a5F8ccbd093/a32921149fb24c50.jpg.avif', '2023-12-09 09:25:58');
 insert into android_shop.img (img_id, url, create_time) values (9, 'https://img14.360buyimg.com/n1/jfs/t1/177251/1/27595/113355/63219cf6E060606be/5e1599473db75c04.jpg.avif', '2023-12-09 09:26:08');
 insert into android_shop.img (img_id, url, create_time) values (10, 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/227049/24/7143/55160/6572d976F7c22b22d/6defa5b7907df9c4.jpg.avif', '2023-12-09 09:27:12');
+insert into android_shop.img (img_id, url, create_time) values (11, 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/59834/17/24966/21781/6412e103F9c702b9d/6e4fdb687f4a56f4.jpg.avif', '2023-12-09 09:27:23');
+insert into android_shop.img (img_id, url, create_time) values (12, 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/215162/8/25975/9755/6412e103F7b1df8dc/ad14296fad14b551.jpg.avif', '2023-12-09 09:27:35');
+insert into android_shop.img (img_id, url, create_time) values (13, 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/229039/7/3988/63616/655db033F5f63c643/b4ca070981cca37e.jpg.avif', '2023-12-09 09:29:11');
+insert into android_shop.img (img_id, url, create_time) values (14, 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/161581/25/30532/79914/6315bb57E19ae6da5/b58a8a55086eeef6.jpg.avif', '2023-12-09 09:29:26');
+insert into android_shop.img (img_id, url, create_time) values (15, 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/192171/29/28537/45809/6315bb57Eb0102f9d/65fef808e6fb38db.jpg.avif', '2023-12-09 09:29:33');
+insert into android_shop.img (img_id, url, create_time) values (16, 'https://img14.360buyimg.com/n1/s450x450_jfs/t1/226891/21/5238/58546/6568587cF1442d0a3/751317fdba648098.jpg.avif', '2023-12-09 09:30:55');
+insert into android_shop.img (img_id, url, create_time) values (17, 'https://img14.360buyimg.com/n1/s450x450_jfs/t1/100112/30/24860/94031/64d30db3F7550257a/7f556f8b264b362c.jpg.avif', '2023-12-09 09:31:05');
+insert into android_shop.img (img_id, url, create_time) values (18, 'https://img14.360buyimg.com/n1/s450x450_jfs/t1/218783/40/33566/92859/64d30dc4F50aea9fe/a77546296aee966e.jpg.avif', '2023-12-09 09:31:11');
 
 -- goods
 insert into android_shop.goods (goods_id, user_id, name, price, img, detail, type, state, create_time, update_time) values (1, 1, '品胜 手机支架桌面', 18.90, 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/119466/12/28216/166208/637f2f16E1ab0c32f/99da4e0c6e2b4353.jpg.avif', '品胜 手机支架桌面 直播网课便携可折叠旋转 床头懒人支架 通用于华为苹果iphone安卓小米手机架 白色', '卖', 1, '2023-12-09 09:17:12', '2023-12-09 09:17:12');
@@ -33,6 +41,14 @@ insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) val
 insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (8, 2, 8, '2023-12-09 09:26:35');
 insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (9, 2, 9, '2023-12-09 09:26:35');
 insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (10, 3, 10, '2023-12-09 09:28:01');
+insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (11, 3, 11, '2023-12-09 09:28:01');
+insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (12, 3, 12, '2023-12-09 09:28:01');
+insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (13, 4, 13, '2023-12-09 09:30:12');
+insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (14, 4, 14, '2023-12-09 09:30:12');
+insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (15, 4, 15, '2023-12-09 09:30:12');
+insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (16, 5, 16, '2023-12-09 09:31:29');
+insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (17, 5, 17, '2023-12-09 09:31:29');
+insert into android_shop.goods_img (g_img_id, goods_id, img_id, create_time) values (18, 5, 18, '2023-12-09 09:31:29');
 
 -- favorite
 insert into android_shop.favorite (favorite_id, user_id, goods_id, state, create_time, update_time) values (2, 2, 3, 1, '2023-12-09 09:57:59', '2023-12-09 09:57:59');
