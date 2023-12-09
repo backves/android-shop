@@ -26,7 +26,7 @@ create table goods
     user_id     bigint unsigned not null,
     name        varchar(255)    not null,
     price       decimal(10, 2)  not null,
-    img         varchar(255)    not null,
+    img         varchar(255)             default null,
     detail      varchar(500)    not null,
     type        varchar(5)      not null,
     state       tinyint(1)      not null default 1,

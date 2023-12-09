@@ -5,14 +5,14 @@
 <mapper namespace="com.example.androidshop.mapper.GoodsImgMapper">
 
     <resultMap id="BaseResultMap" type="com.example.androidshop.entity.po.GoodsImg">
-            <id property="imgId" column="img_id" jdbcType="BIGINT"/>
-            <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
-            <result property="image" column="image" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <id property="gImgId" column="g_img_id" jdbcType="BIGINT"/>
+        <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+        <result property="imgId" column="img_id" jdbcType="BIGINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        img_id,goods_id,image,
+        g_img_id,goods_id,img_id,
         create_time
     </sql>
     <select id="listByGoodsId" resultType="com.example.androidshop.entity.vo.GoodsImgVO"
