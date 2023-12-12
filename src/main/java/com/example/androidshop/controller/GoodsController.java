@@ -26,6 +26,7 @@ public class GoodsController {
     @PostMapping("/postGoods")
     public Result postGoods(@RequestBody @Validated(Goods.Insert.class) Goods goods) {
 
+        System.out.println(goods);
         Map<String, Object> map = ThreadLocalUtil.get();
         Long userId = Long.valueOf(String.valueOf(map.get("id")));
 
@@ -38,7 +39,9 @@ public class GoodsController {
         goods.setUserId(userId);
 
         goodsService.save(goods);
-        return Result.success();
+        g = goodsService.getByNameAndUserId(goods.getName(), userId);
+
+        return Result.success(g.getGoodsId());
     }
 
     @GetMapping("/goodsInfo")

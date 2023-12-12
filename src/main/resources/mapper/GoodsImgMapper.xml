@@ -22,5 +22,6 @@
              goods_img
         where goods_id = #{goodsId}
           and img.img_id = goods_img.img_id
+        order by goods_img.g_img_id desc
     </select>
 </mapper>

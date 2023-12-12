@@ -11,4 +11,6 @@ import java.util.List;
 public interface GoodsImgService extends IService<GoodsImg> {
 
     List<GoodsImgVO> listByGoodsId(Long goodsId);
+
+    boolean checkRepetition(Long goodsId, Integer imgId);
 }

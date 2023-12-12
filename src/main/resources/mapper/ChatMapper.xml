@@ -26,7 +26,8 @@
                clm.content     as last_message,
                clm.create_time as last_time
         FROM chat
-                 INNER JOIN user ON chat.seller_id = user.user_id
+                 INNER JOIN user ON (chat.seller_id = user.user_id AND chat.buyer_id = #{userId}) OR
+                                    (chat.buyer_id = user.user_id AND chat.seller_id = #{userId})
                  INNER JOIN goods ON chat.goods_id = goods.goods_id
                  INNER JOIN (SELECT content, chat_message.chat_id, create_time
                              FROM chat_message

@@ -27,8 +27,11 @@ public class GoodsImgController {
         Long goodsId = Long.valueOf(String.valueOf(json.get("goodsId")));
         List<Integer> imgIds = (List<Integer>) json.get("imgIds");
 
-        System.out.println(goodsId);
-        System.out.println(imgIds);
+        for (Integer imgId : imgIds) {
+            if (goodsImgService.checkRepetition(goodsId, imgId)) {
+                return Result.error("商品图片重复");
+            }
+        }
 
         Goods goods = goodsService.getById(goodsId);
         if (goods == null) {

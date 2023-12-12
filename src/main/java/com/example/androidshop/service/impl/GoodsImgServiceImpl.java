@@ -18,6 +18,15 @@ public class GoodsImgServiceImpl extends ServiceImpl<GoodsImgMapper, GoodsImg>
     public List<GoodsImgVO> listByGoodsId(Long goodsId) {
         return baseMapper.listByGoodsId(goodsId);
     }
+
+    @Override
+    public boolean checkRepetition(Long goodsId, Integer imgId) {
+        LambdaQueryWrapper<GoodsImg> wrapper = new LambdaQueryWrapper<GoodsImg>()
+                .eq(GoodsImg::getGoodsId, goodsId)
+                .eq(GoodsImg::getImgId, imgId);
+        GoodsImg goodsImg = getOne(wrapper);
+        return goodsImg != null;
+    }
 }
 
 
