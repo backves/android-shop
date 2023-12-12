@@ -222,7 +222,7 @@ public class OrderController {
         Map<String, Object> map = ThreadLocalUtil.get();
         Long userId = Long.valueOf(String.valueOf(map.get("id")));
 
-        List<Order> orderList = orderService.listOrder(userId, state, isSeller);
+        List<OrderVO> orderList = orderService.listOrder(userId, state, isSeller);
 
         return Result.success(orderList);
     }

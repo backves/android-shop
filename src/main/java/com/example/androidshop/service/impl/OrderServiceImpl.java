@@ -36,7 +36,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
     }
 
     @Override
-    public List<Order> listOrder(Long userId, Integer state, Boolean isSeller) {
+    public List<OrderVO> listOrder(Long userId, Integer state, Boolean isSeller) {
         return orderMapper.listOrder(userId, state, isSeller);
     }
 

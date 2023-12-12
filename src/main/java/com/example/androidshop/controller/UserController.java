@@ -53,8 +53,6 @@ public class UserController {
     @PostMapping("/login")
     public Result login(String phone, String password) {
 
-        System.out.println(phone + ", " + password);
-
         if (!Validator.isMobile(phone)) {
             return Result.error("手机号不正确");
         }
@@ -73,7 +71,11 @@ public class UserController {
         claims.put("phone", user.getPhone());
         String token = JwtUtil.genToken(claims);
 
-        return Result.success(token);
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", String.valueOf(user.getUserId()));
+        map.put("token", token);
+
+        return Result.success(map);
     }
 
     @PostMapping("/setDefaultAddress")

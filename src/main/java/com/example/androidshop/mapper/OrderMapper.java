@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface OrderMapper extends BaseMapper<Order> {
 
-    List<Order> listOrder(Long userId, Integer state, Boolean isSeller);
+    List<OrderVO> listOrder(Long userId, Integer state, Boolean isSeller);
 
     OrderVO orderInfo(Long orderId);
 }

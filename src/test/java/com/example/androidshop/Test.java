@@ -1,12 +1,14 @@
 package com.example.androidshop;
 
-import cn.hutool.core.lang.UUID;
 import com.example.androidshop.service.FavoriteService;
 import com.example.androidshop.service.GoodsService;
 import com.example.androidshop.utils.Md5Util;
 import com.example.androidshop.utils.ShortUuidUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 
 @SpringBootTest
@@ -34,5 +36,10 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void testMapper() {
         System.out.println(foodsService.listFavoriteByUserId(3L, 0, 10));
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testOSS() throws FileNotFoundException {
+        System.out.println(AliOssUtil.uploadFile("003.png",new FileInputStream("C:\\Users\\28434\\Desktop\\stu\\1.jpg")));
     }
 }

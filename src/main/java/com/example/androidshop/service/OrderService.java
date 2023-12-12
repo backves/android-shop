@@ -15,7 +15,7 @@ public interface OrderService extends IService<Order> {
 
     void cancelOrder(Order order);
 
-    List<Order> listOrder(Long userId, Integer state, Boolean isSeller);
+    List<OrderVO> listOrder(Long userId, Integer state, Boolean isSeller);
 
     Long getByUserIdAndGoodsId(Long sellerId, Long buyerId, Long goodsId);
 

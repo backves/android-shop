@@ -32,21 +32,29 @@
         where seller_id = #{userId}
            or buyer_id = #{userId}
     </select>
-    <select id="listOrder" resultType="com.example.androidshop.entity.po.Order">
-        select *
-        from `orders`
+    <select id="listOrder" resultType="com.example.androidshop.entity.vo.OrderVO">
+        select orders.*,
+               goods.img    as goods_img,
+               goods.detail as goods_detail,
+               goods.name   as goods_name,
+               goods.price  as goods_price,
+               user.username,
+               user.nickname
+        from orders
+            inner join user on orders.seller_id = user.user_id
+            inner join goods on orders.goods_id = goods.goods_id
         <where>
             <if test="state!= null">
-                state = #{state}
+                orders.state = #{state}
             </if>
             <if test="isSeller!= null and isSeller">
-                and seller_id = #{userId}
+                and orders.seller_id = #{userId}
             </if>
             <if test="isSeller!= null and!isSeller">
-                and buyer_id = #{userId}
+                and orders.buyer_id = #{userId}
             </if>
             <if test="isSeller == null">
-                and (seller_id = #{userId} or buyer_id = #{userId})
+                and (orders.seller_id = #{userId} or orders.buyer_id = #{userId})
             </if>
         </where>
     </select>
