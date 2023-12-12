@@ -15,8 +15,8 @@ public class AliOssUtil {
 //        EnvironmentVariableCredentialsProvider credentialsProvider = CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
     public static final String BUCKET_NAME = "shop-android";
 
-    public static final String ACCESS_KEY_ID = "LTAI5tCzXxuLxLHkoD9fijTL";
-    public static final String ACCESS_KEY_SECRET = "Wy4PteDRnXMpr6dI5l9rZdWKHkceo4";
+    public static final String ACCESS_KEY_ID = "";
+    public static final String ACCESS_KEY_SECRET = "";
 
     public static String uploadFile(String objectName, InputStream inputStream) {
         OSS ossClient = new OSSClientBuilder().build(ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET);
